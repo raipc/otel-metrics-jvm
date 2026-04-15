@@ -1,0 +1,1104 @@
+{
+    "title": "GC Metrics",
+    "name": "gc-metrics",
+    "description": "",
+    "parametrization": {
+        "parameters": [
+            {
+                "name": "cluster",
+                "title": "cluster",
+                "hidden": false,
+                "grouped": false,
+                "labelValues": {
+                    "selectors": "{}",
+                    "labelKey": "cluster",
+                    "multiselectable": false,
+                    "defaultValues": [
+                        "default"
+                    ]
+                }
+            },
+            {
+                "name": "service",
+                "title": "service",
+                "hidden": false,
+                "grouped": false,
+                "labelValues": {
+                    "selectors": "{}",
+                    "labelKey": "service",
+                    "multiselectable": false,
+                    "defaultValues": [
+                        "*"
+                    ]
+                }
+            },
+            {
+                "name": "host",
+                "title": "host",
+                "hidden": false,
+                "grouped": false,
+                "labelValues": {
+                    "selectors": "{}",
+                    "labelKey": "host",
+                    "multiselectable": false,
+                    "defaultValues": [
+                        "*"
+                    ]
+                }
+            }
+        ],
+        "selectors": "{cluster=\"*\", service=\"*\", host=\"*\"}"
+    },
+    "eventSources": {
+        "infra": []
+    },
+    "widgets": [
+        {
+            "links": [],
+            "position": {
+                "x": "0",
+                "y": "0",
+                "w": "18",
+                "h": "8"
+            },
+            "chart": {
+                "seriesOverrides": [
+                    {
+                        "targetIndex": "0",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_UNSPECIFIED",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_UNSPECIFIED"
+                        },
+                        "overrideName": "Override",
+                        "id": "c92e36d2-d512-4c6d-8a47-9ca3a47724d9"
+                    }
+                ],
+                "overlays": [],
+                "id": "qsIIM8F12ZNtxWr-YwiMk",
+                "queries": {
+                    "targets": [
+                        {
+                            "query": "histogram_percentile([50, 90, 95], {cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.hiccup.duration\"})",
+                            "textMode": false,
+                            "hidden": false,
+                            "name": "A"
+                        }
+                    ],
+                    "downsampling": null
+                },
+                "visualizationSettings": {
+                    "type": "VISUALIZATION_TYPE_LINE",
+                    "normalize": false,
+                    "interpolate": "INTERPOLATE_UNSPECIFIED",
+                    "aggregation": "SERIES_AGGREGATION_UNSPECIFIED",
+                    "colorSchemeSettings": null,
+                    "heatmapSettings": null,
+                    "yaxisSettings": {
+                        "left": {
+                            "type": "YAXIS_TYPE_UNSPECIFIED",
+                            "title": "",
+                            "min": "",
+                            "max": "",
+                            "unitFormat": "UNIT_MICROSECONDS",
+                            "precision": {
+                                "value": "3"
+                            }
+                        },
+                        "right": null
+                    },
+                    "title": "",
+                    "showLabels": false,
+                    "tilesSettings": null
+                },
+                "nameHidingSettings": null,
+                "description": "",
+                "title": "Hiccups low percentiles",
+                "displayLegend": false,
+                "freeze": "FREEZE_DURATION_UNSPECIFIED",
+                "repeat": null,
+                "thresholds": {
+                    "items": [
+                        {
+                            "color": "#92db00",
+                            "id": "base"
+                        }
+                    ],
+                    "showMode": "CONSTANT_LINE"
+                },
+                "eventSources": null
+            },
+            "widget": "chart"
+        },
+        {
+            "links": [],
+            "position": {
+                "x": "18",
+                "y": "0",
+                "w": "18",
+                "h": "8"
+            },
+            "chart": {
+                "seriesOverrides": [
+                    {
+                        "targetIndex": "0",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_UNSPECIFIED",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_UNSPECIFIED"
+                        },
+                        "overrideName": "Override",
+                        "id": "ff4ac3b6-ce96-4e2d-aa2c-52e6d7dc8d67"
+                    }
+                ],
+                "overlays": [],
+                "id": "-CxRIORRGHyi9C9e8dWQr",
+                "queries": {
+                    "targets": [
+                        {
+                            "query": "histogram_percentile([99, 99.9, 99.99], {cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.hiccup.duration\"})",
+                            "textMode": false,
+                            "hidden": false,
+                            "name": "A"
+                        }
+                    ],
+                    "downsampling": null
+                },
+                "visualizationSettings": {
+                    "type": "VISUALIZATION_TYPE_LINE",
+                    "normalize": false,
+                    "interpolate": "INTERPOLATE_UNSPECIFIED",
+                    "aggregation": "SERIES_AGGREGATION_UNSPECIFIED",
+                    "colorSchemeSettings": null,
+                    "heatmapSettings": null,
+                    "yaxisSettings": {
+                        "left": {
+                            "type": "YAXIS_TYPE_UNSPECIFIED",
+                            "title": "",
+                            "min": "",
+                            "max": "",
+                            "unitFormat": "UNIT_MICROSECONDS",
+                            "precision": {
+                                "value": "3"
+                            }
+                        },
+                        "right": null
+                    },
+                    "title": "",
+                    "showLabels": false,
+                    "tilesSettings": null
+                },
+                "nameHidingSettings": null,
+                "description": "",
+                "title": "Hiccups high percentiles",
+                "displayLegend": false,
+                "freeze": "FREEZE_DURATION_UNSPECIFIED",
+                "repeat": null,
+                "thresholds": {
+                    "items": [
+                        {
+                            "color": "#92db00",
+                            "id": "base"
+                        }
+                    ],
+                    "showMode": "CONSTANT_LINE"
+                },
+                "eventSources": null
+            },
+            "widget": "chart"
+        },
+        {
+            "links": [],
+            "position": {
+                "x": "0",
+                "y": "8",
+                "w": "18",
+                "h": "8"
+            },
+            "chart": {
+                "seriesOverrides": [
+                    {
+                        "targetIndex": "0",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_UNSPECIFIED",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_UNSPECIFIED"
+                        },
+                        "overrideName": "Override",
+                        "id": "de63e94e-cf5f-4847-a0a9-e30bff3ac342"
+                    }
+                ],
+                "overlays": [],
+                "id": "XsJ0Dain73gyI9-riNDlX",
+                "queries": {
+                    "targets": [
+                        {
+                            "query": "round(rate_to_delta({cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.gc.count\", instrumentation.source = \"jmx\"}))",
+                            "textMode": false,
+                            "hidden": false,
+                            "name": "A"
+                        }
+                    ],
+                    "downsampling": null
+                },
+                "visualizationSettings": {
+                    "type": "VISUALIZATION_TYPE_LINE",
+                    "normalize": false,
+                    "interpolate": "INTERPOLATE_UNSPECIFIED",
+                    "aggregation": "SERIES_AGGREGATION_UNSPECIFIED",
+                    "colorSchemeSettings": null,
+                    "heatmapSettings": null,
+                    "yaxisSettings": {
+                        "left": {
+                            "type": "YAXIS_TYPE_UNSPECIFIED",
+                            "title": "",
+                            "min": "",
+                            "max": "",
+                            "unitFormat": "UNIT_FORMAT_UNSPECIFIED",
+                            "precision": {
+                                "value": "1"
+                            }
+                        },
+                        "right": null
+                    },
+                    "title": "",
+                    "showLabels": false,
+                    "tilesSettings": null
+                },
+                "nameHidingSettings": null,
+                "description": "",
+                "title": "GC Causes",
+                "displayLegend": false,
+                "freeze": "FREEZE_DURATION_UNSPECIFIED",
+                "repeat": null,
+                "thresholds": {
+                    "items": [
+                        {
+                            "color": "#92db00",
+                            "id": "base"
+                        }
+                    ],
+                    "showMode": "CONSTANT_LINE"
+                },
+                "eventSources": null
+            },
+            "widget": "chart"
+        },
+        {
+            "links": [],
+            "position": {
+                "x": "18",
+                "y": "8",
+                "w": "18",
+                "h": "8"
+            },
+            "chart": {
+                "seriesOverrides": [
+                    {
+                        "targetIndex": "0",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_UNSPECIFIED",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_UNSPECIFIED"
+                        },
+                        "overrideName": "Override",
+                        "id": "8ef75367-49f9-409d-831e-130d5fed9797"
+                    }
+                ],
+                "overlays": [],
+                "id": "c12x31kDR26riwbZVhWsv",
+                "queries": {
+                    "targets": [
+                        {
+                            "query": "alias(histogram_percentile(99.99, {cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.gc.pause\"}), \"GC pause p99.99\")",
+                            "textMode": false,
+                            "hidden": false,
+                            "name": "A"
+                        },
+                        {
+                            "query": "alias(histogram_percentile(99.99, {cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.gc.allocation_stall\"}), \"alloc stall p99.99\")",
+                            "textMode": false,
+                            "hidden": false,
+                            "name": "B"
+                        }
+                    ],
+                    "downsampling": null
+                },
+                "visualizationSettings": {
+                    "type": "VISUALIZATION_TYPE_LINE",
+                    "normalize": false,
+                    "interpolate": "INTERPOLATE_UNSPECIFIED",
+                    "aggregation": "SERIES_AGGREGATION_UNSPECIFIED",
+                    "colorSchemeSettings": null,
+                    "heatmapSettings": null,
+                    "yaxisSettings": {
+                        "left": {
+                            "type": "YAXIS_TYPE_UNSPECIFIED",
+                            "title": "",
+                            "min": "",
+                            "max": "",
+                            "unitFormat": "UNIT_MICROSECONDS",
+                            "precision": {
+                                "value": "3"
+                            }
+                        },
+                        "right": null
+                    },
+                    "title": "",
+                    "showLabels": false,
+                    "tilesSettings": null
+                },
+                "nameHidingSettings": null,
+                "description": "",
+                "title": "GC Time / Allocation Stalls",
+                "displayLegend": false,
+                "freeze": "FREEZE_DURATION_UNSPECIFIED",
+                "repeat": null,
+                "thresholds": {
+                    "items": [
+                        {
+                            "color": "#92db00",
+                            "id": "base"
+                        }
+                    ],
+                    "showMode": "CONSTANT_LINE"
+                },
+                "eventSources": null
+            },
+            "widget": "chart"
+        },
+        {
+            "links": [],
+            "position": {
+                "x": "18",
+                "y": "16",
+                "w": "18",
+                "h": "8"
+            },
+            "chart": {
+                "seriesOverrides": [
+                    {
+                        "targetIndex": "0",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_UNSPECIFIED",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_UNSPECIFIED"
+                        },
+                        "overrideName": "Override",
+                        "id": "36f6e71a-458b-4d82-a394-35cca935f622"
+                    }
+                ],
+                "overlays": [],
+                "id": "pQj9Yt0Gf3gccy5JPDJS9",
+                "queries": {
+                    "targets": [
+                        {
+                            "query": "round(rate_to_delta({cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.gc.time\", instrumentation.source = \"jmx\"}))",
+                            "textMode": false,
+                            "hidden": false,
+                            "name": "A"
+                        }
+                    ],
+                    "downsampling": null
+                },
+                "visualizationSettings": {
+                    "type": "VISUALIZATION_TYPE_LINE",
+                    "normalize": false,
+                    "interpolate": "INTERPOLATE_UNSPECIFIED",
+                    "aggregation": "SERIES_AGGREGATION_UNSPECIFIED",
+                    "colorSchemeSettings": null,
+                    "heatmapSettings": null,
+                    "yaxisSettings": {
+                        "left": {
+                            "type": "YAXIS_TYPE_UNSPECIFIED",
+                            "title": "",
+                            "min": "",
+                            "max": "",
+                            "unitFormat": "UNIT_MILLISECONDS",
+                            "precision": {
+                                "value": "3"
+                            }
+                        },
+                        "right": null
+                    },
+                    "title": "",
+                    "showLabels": false,
+                    "tilesSettings": null
+                },
+                "nameHidingSettings": null,
+                "description": "",
+                "title": "GC Time",
+                "displayLegend": false,
+                "freeze": "FREEZE_DURATION_UNSPECIFIED",
+                "repeat": null,
+                "thresholds": {
+                    "items": [
+                        {
+                            "color": "#92db00",
+                            "id": "base"
+                        }
+                    ],
+                    "showMode": "CONSTANT_LINE"
+                },
+                "eventSources": null
+            },
+            "widget": "chart"
+        },
+        {
+            "links": [],
+            "position": {
+                "x": "0",
+                "y": "16",
+                "w": "18",
+                "h": "8"
+            },
+            "chart": {
+                "seriesOverrides": [
+                    {
+                        "targetIndex": "0",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_STACK",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_UNSPECIFIED"
+                        },
+                        "overrideName": "Override",
+                        "id": "ed54c235-ee4d-43b0-bcd9-32558ecd71b9"
+                    }
+                ],
+                "overlays": [],
+                "id": "m4h8kKSreiH7WCBXqJUmB",
+                "queries": {
+                    "targets": [
+                        {
+                            "query": "{cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.thread.allocated_bytes.total\"}",
+                            "textMode": false,
+                            "hidden": false,
+                            "name": "A"
+                        },
+                        {
+                            "query": "alias({cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.gc.promotion\"} + A * 0, \"jvm.gc.promotion\")",
+                            "textMode": true,
+                            "hidden": false,
+                            "name": "B"
+                        }
+                    ],
+                    "downsampling": null
+                },
+                "visualizationSettings": {
+                    "type": "VISUALIZATION_TYPE_LINE",
+                    "normalize": false,
+                    "interpolate": "INTERPOLATE_UNSPECIFIED",
+                    "aggregation": "SERIES_AGGREGATION_UNSPECIFIED",
+                    "colorSchemeSettings": null,
+                    "heatmapSettings": null,
+                    "yaxisSettings": {
+                        "left": {
+                            "type": "YAXIS_TYPE_UNSPECIFIED",
+                            "title": "",
+                            "min": "",
+                            "max": "",
+                            "unitFormat": "UNIT_BYTES_SI",
+                            "precision": {
+                                "value": "3"
+                            }
+                        },
+                        "right": null
+                    },
+                    "title": "",
+                    "showLabels": false,
+                    "tilesSettings": null
+                },
+                "nameHidingSettings": null,
+                "description": "",
+                "title": "Allocation Rate",
+                "displayLegend": false,
+                "freeze": "FREEZE_DURATION_UNSPECIFIED",
+                "repeat": null,
+                "thresholds": {
+                    "items": [
+                        {
+                            "color": "#92db00",
+                            "id": "base"
+                        }
+                    ],
+                    "showMode": "CONSTANT_LINE"
+                },
+                "eventSources": null
+            },
+            "widget": "chart"
+        },
+        {
+            "links": [],
+            "position": {
+                "x": "0",
+                "y": "24",
+                "w": "18",
+                "h": "8"
+            },
+            "chart": {
+                "seriesOverrides": [
+                    {
+                        "targetIndex": "0",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_STACK",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_UNSPECIFIED"
+                        },
+                        "overrideName": "Override",
+                        "id": "e5f0089d-0615-4671-a026-59e80b46a5d7"
+                    }
+                ],
+                "overlays": [],
+                "id": "onl4NlG3K-8oZKPL_dNlg",
+                "queries": {
+                    "targets": [
+                        {
+                            "query": "{cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.thread.cpu_time\", thread.pool.name = \"GC*|G1*|Z*|Shenandoah*\"}",
+                            "textMode": false,
+                            "hidden": false,
+                            "name": "A"
+                        }
+                    ],
+                    "downsampling": null
+                },
+                "visualizationSettings": {
+                    "type": "VISUALIZATION_TYPE_LINE",
+                    "normalize": false,
+                    "interpolate": "INTERPOLATE_UNSPECIFIED",
+                    "aggregation": "SERIES_AGGREGATION_UNSPECIFIED",
+                    "colorSchemeSettings": null,
+                    "heatmapSettings": null,
+                    "yaxisSettings": {
+                        "left": {
+                            "type": "YAXIS_TYPE_UNSPECIFIED",
+                            "title": "",
+                            "min": "",
+                            "max": "",
+                            "unitFormat": "UNIT_VIRTUAL_CPU",
+                            "precision": {
+                                "value": "3"
+                            }
+                        },
+                        "right": null
+                    },
+                    "title": "",
+                    "showLabels": false,
+                    "tilesSettings": null
+                },
+                "nameHidingSettings": null,
+                "description": "",
+                "title": "GC Threads Consumption",
+                "displayLegend": false,
+                "freeze": "FREEZE_DURATION_UNSPECIFIED",
+                "repeat": null,
+                "thresholds": {
+                    "items": [
+                        {
+                            "color": "#92db00",
+                            "id": "base"
+                        }
+                    ],
+                    "showMode": "CONSTANT_LINE"
+                },
+                "eventSources": null
+            },
+            "widget": "chart"
+        },
+        {
+            "links": [],
+            "position": {
+                "x": "18",
+                "y": "24",
+                "w": "18",
+                "h": "8"
+            },
+            "chart": {
+                "seriesOverrides": [
+                    {
+                        "targetIndex": "0",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_STACK",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_RIGHT"
+                        },
+                        "overrideName": "Override",
+                        "id": "0ff40087-963f-4519-826f-ae3bcba60ffc"
+                    },
+                    {
+                        "targetIndex": "1",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_STACK",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_UNSPECIFIED"
+                        },
+                        "overrideName": "Override_1",
+                        "id": "93740836-6490-4a38-a9be-924d3c4550ec"
+                    },
+                    {
+                        "targetIndex": "2",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_UNSPECIFIED",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_UNSPECIFIED"
+                        },
+                        "overrideName": "Override_2",
+                        "id": "a7379fda-aa84-4e14-87d9-c13b7a653cc4"
+                    }
+                ],
+                "overlays": [],
+                "id": "y1tqhkR4fKywP6ial7OLx",
+                "queries": {
+                    "targets": [
+                        {
+                            "query": "{cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.gc.thread.cpu_time\"}",
+                            "textMode": false,
+                            "hidden": false,
+                            "name": "gc_sum"
+                        },
+                        {
+                            "query": "series_sum({cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.thread.cpu_time.total\"})",
+                            "textMode": false,
+                            "hidden": true,
+                            "name": "total"
+                        },
+                        {
+                            "query": "alias(gc_sum / total, \"ratio\")",
+                            "textMode": true,
+                            "hidden": false,
+                            "name": "ratio"
+                        }
+                    ],
+                    "downsampling": null
+                },
+                "visualizationSettings": {
+                    "type": "VISUALIZATION_TYPE_LINE",
+                    "normalize": false,
+                    "interpolate": "INTERPOLATE_UNSPECIFIED",
+                    "aggregation": "SERIES_AGGREGATION_UNSPECIFIED",
+                    "colorSchemeSettings": null,
+                    "heatmapSettings": null,
+                    "yaxisSettings": {
+                        "left": {
+                            "type": "YAXIS_TYPE_UNSPECIFIED",
+                            "title": "",
+                            "min": "",
+                            "max": "",
+                            "unitFormat": "UNIT_PERCENT_UNIT",
+                            "precision": {
+                                "value": "3"
+                            }
+                        },
+                        "right": {
+                            "type": "YAXIS_TYPE_UNSPECIFIED",
+                            "title": "",
+                            "min": "",
+                            "max": "",
+                            "unitFormat": "UNIT_VIRTUAL_CPU",
+                            "precision": {
+                                "value": "3"
+                            }
+                        }
+                    },
+                    "title": "",
+                    "showLabels": false,
+                    "tilesSettings": null
+                },
+                "nameHidingSettings": null,
+                "description": "",
+                "title": "GC Threads Ratio",
+                "displayLegend": false,
+                "freeze": "FREEZE_DURATION_UNSPECIFIED",
+                "repeat": null,
+                "thresholds": {
+                    "items": [
+                        {
+                            "color": "#92db00",
+                            "id": "base"
+                        }
+                    ],
+                    "showMode": "CONSTANT_LINE"
+                },
+                "eventSources": null
+            },
+            "widget": "chart"
+        },
+        {
+            "links": [],
+            "position": {
+                "x": "0",
+                "y": "32",
+                "w": "18",
+                "h": "8"
+            },
+            "chart": {
+                "seriesOverrides": [
+                    {
+                        "targetIndex": "0",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_STACK",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_UNSPECIFIED"
+                        },
+                        "overrideName": "Override",
+                        "id": "a0639648-f4ca-42ac-b03c-d2f81b320053"
+                    }
+                ],
+                "overlays": [],
+                "id": "26wRsH4jhqxWRXJSaHH2t",
+                "queries": {
+                    "targets": [
+                        {
+                            "query": "let rawBytes = {cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.memory.committed\", jvm.memory.pool.name != \"CodeHeap*|Metaspace|Compressed*\"};\nlet totalBytes = series_sum(rawBytes);\nrawBytes / totalBytes",
+                            "textMode": true,
+                            "hidden": false,
+                            "name": "A"
+                        }
+                    ],
+                    "downsampling": null
+                },
+                "visualizationSettings": {
+                    "type": "VISUALIZATION_TYPE_LINE",
+                    "normalize": false,
+                    "interpolate": "INTERPOLATE_UNSPECIFIED",
+                    "aggregation": "SERIES_AGGREGATION_UNSPECIFIED",
+                    "colorSchemeSettings": null,
+                    "heatmapSettings": null,
+                    "yaxisSettings": {
+                        "left": {
+                            "type": "YAXIS_TYPE_UNSPECIFIED",
+                            "title": "",
+                            "min": "",
+                            "max": "",
+                            "unitFormat": "UNIT_PERCENT_UNIT",
+                            "precision": {
+                                "value": "3"
+                            }
+                        },
+                        "right": null
+                    },
+                    "title": "",
+                    "showLabels": false,
+                    "tilesSettings": null
+                },
+                "nameHidingSettings": null,
+                "description": "",
+                "title": "Memory Regions pct",
+                "displayLegend": false,
+                "freeze": "FREEZE_DURATION_UNSPECIFIED",
+                "repeat": null,
+                "thresholds": {
+                    "items": [
+                        {
+                            "color": "#92db00",
+                            "id": "base"
+                        }
+                    ],
+                    "showMode": "CONSTANT_LINE"
+                },
+                "eventSources": null
+            },
+            "widget": "chart"
+        },
+        {
+            "links": [],
+            "position": {
+                "x": "18",
+                "y": "32",
+                "w": "18",
+                "h": "8"
+            },
+            "chart": {
+                "seriesOverrides": [
+                    {
+                        "targetIndex": "0",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_STACK",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_RIGHT"
+                        },
+                        "overrideName": "Override",
+                        "id": "c5d8258f-2481-40b8-a95a-f6d39d312b58"
+                    },
+                    {
+                        "targetIndex": "0",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_STACK",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_UNSPECIFIED"
+                        },
+                        "overrideName": "Override_1",
+                        "id": "3d3f4125-4f05-4158-b1f0-8d4664e4656d"
+                    }
+                ],
+                "overlays": [],
+                "id": "eANhHmcR2k7HdXdBg9BAB",
+                "queries": {
+                    "targets": [
+                        {
+                            "query": "series_sum({cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.thread.cpu_time.total\"})",
+                            "textMode": false,
+                            "hidden": false,
+                            "name": "total"
+                        }
+                    ],
+                    "downsampling": null
+                },
+                "visualizationSettings": {
+                    "type": "VISUALIZATION_TYPE_LINE",
+                    "normalize": false,
+                    "interpolate": "INTERPOLATE_UNSPECIFIED",
+                    "aggregation": "SERIES_AGGREGATION_UNSPECIFIED",
+                    "colorSchemeSettings": null,
+                    "heatmapSettings": null,
+                    "yaxisSettings": {
+                        "left": {
+                            "type": "YAXIS_TYPE_UNSPECIFIED",
+                            "title": "",
+                            "min": "",
+                            "max": "",
+                            "unitFormat": "UNIT_VIRTUAL_CPU",
+                            "precision": {
+                                "value": "3"
+                            }
+                        },
+                        "right": {
+                            "type": "YAXIS_TYPE_UNSPECIFIED",
+                            "title": "",
+                            "min": "",
+                            "max": "",
+                            "unitFormat": "UNIT_VIRTUAL_CPU",
+                            "precision": {
+                                "value": "3"
+                            }
+                        }
+                    },
+                    "title": "",
+                    "showLabels": false,
+                    "tilesSettings": null
+                },
+                "nameHidingSettings": null,
+                "description": "",
+                "title": "CPU Time Total",
+                "displayLegend": false,
+                "freeze": "FREEZE_DURATION_UNSPECIFIED",
+                "repeat": null,
+                "thresholds": {
+                    "items": [
+                        {
+                            "color": "#92db00",
+                            "id": "base"
+                        }
+                    ],
+                    "showMode": "CONSTANT_LINE"
+                },
+                "eventSources": null
+            },
+            "widget": "chart"
+        },
+        {
+            "links": [],
+            "position": {
+                "x": "0",
+                "y": "40",
+                "w": "18",
+                "h": "8"
+            },
+            "chart": {
+                "seriesOverrides": [
+                    {
+                        "targetIndex": "0",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_UNSPECIFIED",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_UNSPECIFIED"
+                        },
+                        "overrideName": "Override",
+                        "id": "82f8730e-71ed-422a-8526-4d3b385785f6"
+                    }
+                ],
+                "overlays": [],
+                "id": "-47HBLaAaS-VzfdjL-mr6",
+                "queries": {
+                    "targets": [
+                        {
+                            "query": "{cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.memory.used\", jvm.memory.pool.name = \"*\"}",
+                            "textMode": true,
+                            "hidden": false,
+                            "name": "A"
+                        }
+                    ],
+                    "downsampling": null
+                },
+                "visualizationSettings": {
+                    "type": "VISUALIZATION_TYPE_LINE",
+                    "normalize": false,
+                    "interpolate": "INTERPOLATE_UNSPECIFIED",
+                    "aggregation": "SERIES_AGGREGATION_UNSPECIFIED",
+                    "colorSchemeSettings": null,
+                    "heatmapSettings": null,
+                    "yaxisSettings": {
+                        "left": {
+                            "type": "YAXIS_TYPE_UNSPECIFIED",
+                            "title": "",
+                            "min": "",
+                            "max": "",
+                            "unitFormat": "UNIT_BYTES_SI",
+                            "precision": {
+                                "value": "3"
+                            }
+                        },
+                        "right": null
+                    },
+                    "title": "",
+                    "showLabels": false,
+                    "tilesSettings": null
+                },
+                "nameHidingSettings": null,
+                "description": "",
+                "title": "Memory Used",
+                "displayLegend": false,
+                "freeze": "FREEZE_DURATION_UNSPECIFIED",
+                "repeat": null,
+                "thresholds": {
+                    "items": [
+                        {
+                            "color": "#92db00",
+                            "id": "base"
+                        }
+                    ],
+                    "showMode": "CONSTANT_LINE"
+                },
+                "eventSources": null
+            },
+            "widget": "chart"
+        },
+        {
+            "links": [],
+            "position": {
+                "x": "18",
+                "y": "40",
+                "w": "18",
+                "h": "8"
+            },
+            "chart": {
+                "seriesOverrides": [
+                    {
+                        "targetIndex": "0",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_UNSPECIFIED",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_UNSPECIFIED"
+                        },
+                        "overrideName": "Override",
+                        "id": "f6b41e78-936a-4246-a6dc-7c98b9b1410f"
+                    },
+                    {
+                        "targetIndex": "2",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_UNSPECIFIED",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_UNSPECIFIED"
+                        },
+                        "overrideName": "Override_1",
+                        "id": "e4d5ab85-5cf3-4e59-9932-894959e90e68"
+                    },
+                    {
+                        "targetIndex": "1",
+                        "settings": {
+                            "type": "SERIES_VISUALIZATION_TYPE_UNSPECIFIED",
+                            "stackName": "",
+                            "growDown": false,
+                            "yaxisPosition": "YAXIS_POSITION_UNSPECIFIED"
+                        },
+                        "overrideName": "Override_2",
+                        "id": "afd38698-60be-4f2a-94ec-16b77561b61c"
+                    }
+                ],
+                "overlays": [],
+                "id": "RseE--y7G40z59u5Mmmy7",
+                "queries": {
+                    "targets": [
+                        {
+                            "query": "{cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.memory.used\", jvm.memory.pool.name = \"*\"}",
+                            "textMode": false,
+                            "hidden": true,
+                            "name": "used"
+                        },
+                        {
+                            "query": "series_sum({cluster = \"{{cluster}}\", service = \"{{service}}\", host = \"{{host}}\", name = \"jvm.memory.committed\", jvm.memory.type = \"*\"})",
+                            "textMode": false,
+                            "hidden": true,
+                            "name": "committed"
+                        },
+                        {
+                            "query": "used / committed",
+                            "textMode": true,
+                            "hidden": false,
+                            "name": "usedPct"
+                        }
+                    ],
+                    "downsampling": null
+                },
+                "visualizationSettings": {
+                    "type": "VISUALIZATION_TYPE_LINE",
+                    "normalize": false,
+                    "interpolate": "INTERPOLATE_UNSPECIFIED",
+                    "aggregation": "SERIES_AGGREGATION_UNSPECIFIED",
+                    "colorSchemeSettings": null,
+                    "heatmapSettings": null,
+                    "yaxisSettings": {
+                        "left": {
+                            "type": "YAXIS_TYPE_UNSPECIFIED",
+                            "title": "",
+                            "min": "",
+                            "max": "",
+                            "unitFormat": "UNIT_PERCENT_UNIT",
+                            "precision": {
+                                "value": "3"
+                            }
+                        },
+                        "right": null
+                    },
+                    "title": "",
+                    "showLabels": false,
+                    "tilesSettings": null
+                },
+                "nameHidingSettings": null,
+                "description": "",
+                "title": "Memory Used pct",
+                "displayLegend": false,
+                "freeze": "FREEZE_DURATION_UNSPECIFIED",
+                "repeat": null,
+                "thresholds": {
+                    "items": [
+                        {
+                            "color": "#92db00",
+                            "id": "base"
+                        }
+                    ],
+                    "showMode": "CONSTANT_LINE"
+                },
+                "eventSources": null
+            },
+            "widget": "chart"
+        }
+    ],
+    "links": [],
+    "overlays": []
+}
