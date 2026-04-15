@@ -1,4 +1,4 @@
-package io.github.raipc.metrics.jmx;
+package com.github.raipc.metrics.jmx;
 
 import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.ManagementFactory;

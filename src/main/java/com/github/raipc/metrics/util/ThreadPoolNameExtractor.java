@@ -1,4 +1,4 @@
-package io.github.raipc.metrics.util;
+package com.github.raipc.metrics.util;
 
 /**
  * Resolve thread pool name by thread name

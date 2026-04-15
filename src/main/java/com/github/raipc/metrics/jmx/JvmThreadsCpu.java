@@ -1,4 +1,4 @@
-package io.github.raipc.metrics.jmx;
+package com.github.raipc.metrics.jmx;
 
 import java.io.Closeable;
 import java.lang.management.ManagementFactory;
@@ -8,11 +8,10 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.function.LongBinaryOperator;
 import java.util.logging.Logger;
 
-import io.github.raipc.metrics.util.ThreadId;
-import io.github.raipc.metrics.util.ThreadPoolNameExtractor;
+import com.github.raipc.metrics.util.ThreadId;
+import com.github.raipc.metrics.util.ThreadPoolNameExtractor;
 import io.opentelemetry.api.common.AttributeKey;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.metrics.BatchCallback;

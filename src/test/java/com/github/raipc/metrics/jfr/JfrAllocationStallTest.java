@@ -1,10 +1,10 @@
-package io.github.raipc.metrics.jfr;
+package com.github.raipc.metrics.jfr;
 
 import java.io.InputStream;
 
 import io.opentelemetry.sdk.metrics.SdkMeterProvider;
 import io.opentelemetry.sdk.testing.exporter.InMemoryMetricReader;
-import io.github.raipc.metrics.util.NumRemovingThreadPoolNameExtractor;
+import com.github.raipc.metrics.util.NumRemovingThreadPoolNameExtractor;
 import jdk.jfr.consumer.RecordingStream;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.Test;

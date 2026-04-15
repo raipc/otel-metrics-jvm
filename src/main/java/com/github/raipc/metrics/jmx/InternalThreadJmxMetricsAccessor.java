@@ -1,4 +1,4 @@
-package io.github.raipc.metrics.jmx;
+package com.github.raipc.metrics.jmx;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;

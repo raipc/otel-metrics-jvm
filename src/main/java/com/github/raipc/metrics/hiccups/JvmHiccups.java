@@ -1,4 +1,4 @@
-package io.github.raipc.metrics.hiccups;
+package com.github.raipc.metrics.hiccups;
 
 import java.io.Closeable;
 import java.util.concurrent.TimeUnit;

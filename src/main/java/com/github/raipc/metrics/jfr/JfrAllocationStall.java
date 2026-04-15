@@ -1,15 +1,15 @@
-package io.github.raipc.metrics.jfr;
+package com.github.raipc.metrics.jfr;
 
 import java.lang.management.ManagementFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.github.raipc.metrics.util.ThreadId;
+import com.github.raipc.metrics.util.ThreadId;
 import io.opentelemetry.api.common.AttributeKey;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.metrics.LongHistogram;
 import io.opentelemetry.api.metrics.Meter;
-import io.github.raipc.metrics.util.ThreadPoolNameExtractor;
+import com.github.raipc.metrics.util.ThreadPoolNameExtractor;
 import jdk.jfr.consumer.RecordedEvent;
 import jdk.jfr.consumer.RecordedThread;
 import jdk.jfr.consumer.RecordingStream;

@@ -1,4 +1,4 @@
-package io.github.raipc.metrics.jfr;
+package com.github.raipc.metrics.jfr;
 
 import java.time.Duration;
 import java.util.concurrent.ArrayBlockingQueue;

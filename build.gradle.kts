@@ -3,7 +3,7 @@ plugins {
     `maven-publish`
 }
 
-group = "io.github.raipc"
+group = "com.github.raipc"
 version = "0.1.0-SNAPSHOT"
 
 java {

@@ -1,4 +1,4 @@
-package io.github.raipc.metrics.util;
+package com.github.raipc.metrics.util;
 
 /**
  * Advanced implementation of {@link ThreadPoolNameExtractor} that extracts thread pool name
