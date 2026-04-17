@@ -354,7 +354,7 @@
                 },
                 "nameHidingSettings": null,
                 "description": "",
-                "title": "GC Time / Allocation Stalls",
+                "title": "GC Pauses / Allocation Stalls",
                 "displayLegend": false,
                 "freeze": "FREEZE_DURATION_UNSPECIFIED",
                 "repeat": null,
