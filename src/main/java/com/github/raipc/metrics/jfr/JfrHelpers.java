@@ -1,11 +1,27 @@
 package com.github.raipc.metrics.jfr;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodType;
+
 import jdk.jfr.consumer.RecordedThread;
 
 /**
  * Utilities for extracting thread identity from JFR {@link RecordedThread} structures.
  */
 public class JfrHelpers {
+    private static final MethodHandle IS_VIRTUAL;
+    static {
+        MethodHandle handle;
+        try {
+            handle = MethodHandles.lookup()
+                    .findVirtual(RecordedThread.class, "isVirtual", MethodType.methodType(boolean.class));
+        } catch (Throwable e) {
+            handle = null;
+        }
+        IS_VIRTUAL = handle;
+    }
+
     private JfrHelpers() {}
 
     private static final long UNKNOWN_THREAD_ID = Long.MIN_VALUE;
@@ -44,9 +60,24 @@ public class JfrHelpers {
         return UNKNOWN_THREAD_NAME;
     }
 
+    /**
+     * Mirrors {@code RecordedThread.isVirtual()} (JDK 21+). Resolved via {@link MethodHandle} so the project
+     * can compile when {@code --release} is older than 21.
+     */
+    public static boolean isVirtual(RecordedThread thread) {
+        if (thread == null) {
+            return false;
+        }
+        try {
+            return IS_VIRTUAL != null && (boolean) IS_VIRTUAL.invokeExact(thread);
+        } catch (Throwable e) {
+            return false;
+        }
+    }
+
     private static String replaceEmpty(String name, RecordedThread thread) {
         if (name.isEmpty()) {
-            name = thread.isVirtual() ? "<virtual>" : "<empty>";
+            name = isVirtual(thread) ? "<virtual>" : "<empty>";
         }
         return name;
     }

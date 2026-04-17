@@ -89,7 +89,7 @@ public final class JfrAllocationStall implements JfrEventHandler {
     }
 
     private Attributes resolveAttributes(RecordedThread thread) {
-        if (thread != null && thread.isVirtual()) {
+        if (JfrHelpers.isVirtual(thread)) {
             return VIRTUAL_THREAD_ATTRS;
         }
         long threadId = JfrHelpers.getThreadId(thread);
