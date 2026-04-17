@@ -2,6 +2,80 @@
 
 Небольшая библиотека для экспорта JVM-метрик в OpenTelemetry (JMX, JFR, hiccup-meter) для анализа производительности сборщика мусора.
 
+## Подключение
+
+Артефакт доступен через [JitPack](https://jitpack.io/#raipc/otel-metrics-jvm/0.1.0). Добавьте репозиторий JitPack и зависимость.
+
+### Gradle (Kotlin DSL)
+
+В `settings.gradle.kts` (или в `dependencyResolutionManagement` корневого проекта):
+
+```kotlin
+dependencyResolutionManagement {
+	repositories {
+		mavenCentral()
+		maven { url = uri("https://jitpack.io") }
+	}
+}
+```
+
+В `build.gradle.kts` модуля:
+
+```kotlin
+dependencies {
+	implementation("com.github.raipc:otel-metrics-jvm:0.1.0")
+}
+```
+
+### Gradle (Groovy)
+
+```groovy
+repositories {
+	mavenCentral()
+	maven { url "https://jitpack.io" }
+}
+
+dependencies {
+	implementation "com.github.raipc:otel-metrics-jvm:0.1.0"
+}
+```
+
+### Maven
+
+```xml
+<repositories>
+	<repository>
+		<id>jitpack.io</id>
+		<url>https://jitpack.io</url>
+	</repository>
+</repositories>
+
+<dependency>
+	<groupId>com.github.raipc</groupId>
+	<artifactId>otel-metrics-jvm</artifactId>
+	<version>0.1.0</version>
+</dependency>
+```
+
+## Демо-приложение и отправка метрик в Monium
+
+Пример интеграции со Spring Boot — репозиторий [raipc/spring-petclinic](https://github.com/raipc/spring-petclinic).
+
+Метрики экспортируются в формате OpenTelemetry. В качестве приёмника может выступать любая система с поддержкой OTLP. Ниже пример для экспорта метрик в [Monium](https://yandex.cloud/ru/docs/monium/collector/project) (требуется задать `MONIUM_PROJECT` и `MONIUM_API_KEY`)
+
+```bash
+OTEL_EXPORTER_OTLP_PROTOCOL="grpc" \
+OTEL_EXPORTER_OTLP_ENDPOINT="https://ingest.monium.yandex.cloud:443" \
+OTEL_EXPORTER_OTLP_HEADERS="x-monium-project=${MONIUM_PROJECT},authorization=Api-Key ${MONIUM_API_KEY}" \
+OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE=delta \
+OTEL_SERVICE_NAME=java-metrics-demo \
+java -Dotel.java.global-autoconfigure.enabled=true -Dotel.instrumentation.runtime-telemetry.capture-gc-cause=true --add-opens=java.management/sun.management=ALL-UNNAMED -jar target/*.jar
+```
+
+В этом репозитории доступен готовый JSON дашборда для метрик GC — [`gc-metrics-dashboard.json`](gc-metrics-dashboard.json). Его можно импортировать в Monium (Дашборды -> Создать -> Настройки -> JSON) и использовать для визуализации GC метрик в едином месте.
+
+![dashboard.png](dashboard.png)
+
 ## Метрики
 
 ### JMX: `JvmGc`
